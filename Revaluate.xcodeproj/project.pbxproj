@@ -12,6 +12,9 @@
 		1C3503A91C46EAAC009B4D7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C3503A71C46EAAC009B4D7E /* Main.storyboard */; };
 		1C3503AB1C46EAAC009B4D7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C3503AA1C46EAAC009B4D7E /* Assets.xcassets */; };
 		1C3503AE1C46EAAC009B4D7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C3503AC1C46EAAC009B4D7E /* LaunchScreen.storyboard */; };
+		1C4854391C48433C003A4E1C /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C4854381C48433C003A4E1C /* KeychainWrapper.m */; };
+		1C48543B1C4D207F003A4E1C /* HttpCommandExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48543A1C4D207F003A4E1C /* HttpCommandExecutor.swift */; };
+		1C48543D1C4EE082003A4E1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48543C1C4EE082003A4E1C /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,11 @@
 		1C3503AA1C46EAAC009B4D7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C3503AD1C46EAAC009B4D7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C3503AF1C46EAAC009B4D7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C4854361C48433C003A4E1C /* Revaluate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Revaluate-Bridging-Header.h"; sourceTree = "<group>"; };
+		1C4854371C48433C003A4E1C /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		1C4854381C48433C003A4E1C /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		1C48543A1C4D207F003A4E1C /* HttpCommandExecutor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpCommandExecutor.swift; sourceTree = "<group>"; };
+		1C48543C1C4EE082003A4E1C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +65,14 @@
 				1C3503A31C46EAAC009B4D7E /* AppDelegate.swift */,
 				1C3503A51C46EAAC009B4D7E /* ViewController.swift */,
 				1C3503A71C46EAAC009B4D7E /* Main.storyboard */,
+				1C4854371C48433C003A4E1C /* KeychainWrapper.h */,
+				1C4854381C48433C003A4E1C /* KeychainWrapper.m */,
 				1C3503AA1C46EAAC009B4D7E /* Assets.xcassets */,
 				1C3503AC1C46EAAC009B4D7E /* LaunchScreen.storyboard */,
 				1C3503AF1C46EAAC009B4D7E /* Info.plist */,
+				1C4854361C48433C003A4E1C /* Revaluate-Bridging-Header.h */,
+				1C48543A1C4D207F003A4E1C /* HttpCommandExecutor.swift */,
+				1C48543C1C4EE082003A4E1C /* User.swift */,
 			);
 			path = Revaluate;
 			sourceTree = "<group>";
@@ -135,7 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C4854391C48433C003A4E1C /* KeychainWrapper.m in Sources */,
 				1C3503A61C46EAAC009B4D7E /* ViewController.swift in Sources */,
+				1C48543B1C4D207F003A4E1C /* HttpCommandExecutor.swift in Sources */,
+				1C48543D1C4EE082003A4E1C /* User.swift in Sources */,
 				1C3503A41C46EAAC009B4D7E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,10 +263,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Revaluate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.revaluate.Revaluate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Revaluate/Revaluate-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -258,10 +277,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Revaluate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.revaluate.Revaluate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Revaluate/Revaluate-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -284,6 +305,7 @@
 				1C3503B41C46EAAC009B4D7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

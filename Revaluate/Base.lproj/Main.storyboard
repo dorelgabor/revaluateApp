@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Revaluate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,59 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7cm-82-klL">
+                                <rect key="frame" x="175" y="272" width="250" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UKH-1M-WYq">
+                                <rect key="frame" x="277" y="361" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="3ay-Qv-1op"/>
+                                </constraints>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="tryLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xnG-vX-0Rs"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jGM-5C-nhm">
+                                <rect key="frame" x="175" y="316" width="250" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Ee3-oB-UXe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="jGM-5C-nhm" firstAttribute="top" secondItem="7cm-82-klL" secondAttribute="bottom" constant="14" id="1Z4-IC-dEN"/>
+                            <constraint firstItem="7cm-82-klL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-13" id="3tj-hP-Blz"/>
+                            <constraint firstItem="7cm-82-klL" firstAttribute="trailing" secondItem="jGM-5C-nhm" secondAttribute="trailing" id="K4U-yR-cVM"/>
+                            <constraint firstItem="jGM-5C-nhm" firstAttribute="centerX" secondItem="7cm-82-klL" secondAttribute="centerX" id="MdA-ZA-fA2"/>
+                            <constraint firstItem="jGM-5C-nhm" firstAttribute="centerX" secondItem="UKH-1M-WYq" secondAttribute="centerX" id="bLI-zh-aL2"/>
+                            <constraint firstItem="jGM-5C-nhm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gKm-CQ-dH3"/>
+                            <constraint firstItem="UKH-1M-WYq" firstAttribute="top" secondItem="jGM-5C-nhm" secondAttribute="bottom" constant="15" id="qOq-8N-ZRk"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="CXI-Nf-eWP" appends="YES" id="meZ-K4-eOJ"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="7cm-82-klL" id="JVR-13-0l7"/>
+                        <outlet property="passwordTextField" destination="jGM-5C-nhm" id="Kbo-oI-bT0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="CXI-Nf-eWP">
+                    <connections>
+                        <action selector="viewTapped:" destination="BYZ-38-t0r" id="t0g-Qw-I48"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="-939" y="534"/>
         </scene>
     </scenes>
 </document>
