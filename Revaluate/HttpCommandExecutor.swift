@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class HttpCommandExecutor
 {
     // This sets the current environment: Dev or Prod
@@ -34,9 +35,8 @@ class HttpCommandExecutor
      
      - Returns: NSDictionary The response given by the server in JSON format - to dictionary.
      */
-    private func executeGenericCommand(pathURL: String, params: [String: AnyObject]) -> NSDictionary
+    private func executeGenericCommand(pathURL: String, params: [String: AnyObject], completion: (result: NSDictionary?, error: NSError?)->())
     {
-        var responseStr = [:]
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         let session = NSURLSession(configuration: configuration)
         
@@ -47,29 +47,24 @@ class HttpCommandExecutor
         do {
             try request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions())
         } catch { }
+        
         let task = session.dataTaskWithRequest(request) {
             data, response, error in
             
-            if let httpResponse = response as? NSHTTPURLResponse {
-                if httpResponse.statusCode != 200 {
-                    print("Response was not 200: \(response)")
-                    return
-                }
-            }
             if (error != nil) {
                 print("Error submitting request: \(error)")
-                return
+                completion(result: nil, error: error)
             }
-            
-            do {
-                let result = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as? NSDictionary
-                print(result)
-                responseStr = result!
-            } catch { }
+            else {
+                do {
+                    let result = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as? NSDictionary
+                    print(result)
+                    completion(result: result, error: nil)
+                    
+                } catch { }
+            }
         }
         task.resume()
-        
-        return responseStr
     }
     
     /**
@@ -80,13 +75,13 @@ class HttpCommandExecutor
      
      - Returns: NSDictionary The response given by the server in JSON format - to dictionary.
      */
-    func accountLogin(email: NSString, password: NSString) -> NSDictionary
+    func accountLogin(email: NSString, password: NSString, completion: (result: NSDictionary?, error: NSError?)->())
     {
         let pathURL = "/account/login"
         let params:[String: AnyObject] = [
             "email" : email,
             "password" : password ]
-        
-        return self.executeGenericCommand(pathURL, params: params)
+    
+        self.executeGenericCommand(pathURL, params: params, completion: completion)
     }
 }

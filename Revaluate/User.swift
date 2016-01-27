@@ -10,9 +10,9 @@ import Foundation
 
 class User {
     
-    func loginUser(email: NSString, password: NSString) -> NSDictionary {
+    func loginUser(email: NSString, password: NSString, completion: (result: NSDictionary?, error: NSError?)->()) {
         let httpCommandExecutor = HttpCommandExecutor()
         
-        return httpCommandExecutor.accountLogin(email, password: password)
+        httpCommandExecutor.accountLogin(email, password: password, completion: completion)
     }
 }
